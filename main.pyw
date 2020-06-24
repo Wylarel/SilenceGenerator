@@ -1,5 +1,3 @@
-from contextlib import closing
-from PIL import Image
 import subprocess
 from audiotsm import phasevocoder
 from audiotsm.io.wav import WavReader, WavWriter
@@ -9,7 +7,6 @@ import re
 import math
 from shutil import copyfile, rmtree
 import os
-import argparse
 from pytube import YouTube
 import easygui as e
 
@@ -95,13 +92,13 @@ def on_closing():
 root.protocol("WM_DELETE_WINDOW", on_closing)
 
 # GLOBALS
-args_sounded_speed = 1.0
-args_silent_speed = 0.0
+args_sounded_speed = 0.0
+args_silent_speed = 1.0
 args_output_file = ''
 args_input_file = None
 args_url = None
 args_frame_margin = 2
-args_frame_rate = 30
+args_frame_rate = 29.97
 args_frame_quality = 3
 args_silent_threashold = 0.03
 args_sample_rate = 44100
@@ -226,7 +223,7 @@ tk_soundedspeed = tk.Scale(root,
                            resolution=0.1,  # MVC-Controller-Part stepping
                            command=setsoundspeed,
                            )
-tk_soundedspeed.set(1)
+tk_soundedspeed.set(0)
 tk_soundedspeed.grid(row=11, column=1, padx='10')
 tk.Label(root, text='Sounded Speed', background="#f0f0f0", fg="black", font=("Arial", 10)).grid(row=11, column=0)
 
@@ -246,7 +243,9 @@ tk_silentspeed = tk.Scale(root,
                           digits=3,  # MVC-Visual-Part presentation trick
                           resolution=0.1,  # MVC-Controller-Part stepping
                           command=setsilentspeed,
-                          ).grid(row=12, column=1, padx='10')
+                          )
+tk_silentspeed.set(1)
+tk_silentspeed.grid(row=12, column=1, padx='10')
 tk.Label(root, text='Silent Speed    ', background="#f0f0f0", fg="black", font=("Arial", 10)).grid(row=12, column=0)
 
 tk.Label(root, text='*0 for instant', background="#f0f0f0", fg="black", font=("Arial", 8)).grid(row=13, column=0)
@@ -355,7 +354,7 @@ tk.Label(root, text='Sample Rate    ', background="#f0f0f0", justify='left', fg=
 
 tk.PanedWindow(root, orient="horizontal", width=300, background="#f0f0f0", height=2).grid(row=21, columnspan=2, pady=10)
 
-tk.Label(root, text='© Original by carykh  -  GUI by BatchSource', background="#f0f0f0", justify='left', fg="#787878", font=("Arial Bold", 10)).grid(row=200, columnspan=2)
+tk.Label(root, text='© Original by carykh - GUI by BatchSource - Modified by Wylarel', background="#f0f0f0", justify='center', fg="#787878", font=("Arial Bold", 7)).grid(row=200, columnspan=2)
 
 root.mainloop()
 
@@ -378,7 +377,7 @@ args_frame_quality = int(args_frame_quality)
 ###############
 
 root = tk.Tk()
-root.title('Jumpcutter GUI - Exporting...')
+root.title('Silence Generator - Exporting...')
 root.maxsize(350, 510)
 root.minsize(350, 510)
 root.resizable(False, False)
@@ -397,7 +396,7 @@ tk.Label(root, text='Exporting...', background="#f0f0f0", fg="black", font=("Ari
 tk.Label(root, text='(Don\'t try to close out!)', background="#f0f0f0", fg="black", font=("Arial Bold", 10)).pack(side='top')
 
 tk.PanedWindow(root, orient="horizontal", width=300, background="#000000", height=2).pack(pady=10)
-tk.Label(root, text='© Original by carykh  -  GUI by BatchSource', background="#f0f0f0", justify='left', fg="#787878", font=("Arial Bold", 10)).pack(side='bottom')
+tk.Label(root, text='© Original by carykh - GUI by BatchSource - Modified by Wylarel', background="#f0f0f0", justify='center', fg="#787878", font=("Arial Bold", 7)).pack(side='bottom')
 
 
 def tkadddata(x):
