@@ -1,6 +1,6 @@
 # WORK IN PROGRESS - Silence Generator
 
-[Carykh](https://www.github.com/Carykh)'s jumpcutter with a tkinter interface made by [BatchSource](https://www.github.com/BatchSource) adapted by [Wylarel](https://www.github.com/Wylarel)
+[Carykh](https://www.github.com/carykh)'s [jumpcutter](https://github.com/carykh/jumpcutter) with a tkinter interface made by [BatchSource](https://www.github.com/BatchSource/Jumpcutter-GUI) adapted by [Wylarel](https://www.github.com/Wylarel)
 
 ### Some heads-up:
 
