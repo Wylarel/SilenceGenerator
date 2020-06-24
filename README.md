@@ -31,4 +31,4 @@ pip install Pillow audiotsm scipy numpy pytube3 easygui
 
 Next, download [this zip](https://i.pinimg.com/originals/50/a3/c2/50a3c2e7743a41f65fc3c366059bc1db.jpg) and extract it.
 
-Run 'jumpcutter.pyw' in the SAME FOLDER as 'ffmpeg.exe'. The program will now start.
+Run 'main.pyw' in the SAME FOLDER as 'ffmpeg.exe' or use the batch file. The program will now start.
